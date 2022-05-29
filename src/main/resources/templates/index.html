@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>EPS:Main Page</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.min.css}"/>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+    <header class="card-header">
+        <div class="container-fluid">
+
+           <button class="btn" onclick="location.href='/register'">Register</button>
+            <button class="btn" onclick="location.href='/logIn'" th:text="${buttonName}"></button>
+        </div>
+
+    </header>
+<main role="main" class="container cheight">
+<div class="offset-xl-0 py-sm-5">
+
+        <p class="display-1 specifycolor mt-sm-5">
+     WELCOME<br>
+     TO<br>
+     EVENT PLACE SYSTEM...<br>
+        </p>
+</div>
+</main>
+    <footer class="card-footer talign" style="background-color:transparent">
+        <span class="col-form-label-lg"><h6>@Prepared by Maksim Rybakov</h6></span>
+    </footer>
+</body>
+</html>

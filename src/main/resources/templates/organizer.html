@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>EPS:Profile</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.min.css}"/>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<header class="card-header">
+    <div class="container-fluid">
+        <span>
+        <span th:text="'Profile: '+${participant.getLogin()}" class="cols-6">
+        </span>
+            <img th:src="@{/img/premium.png}" style="width:1%"/>
+        </span>
+    </div>
+</header>
+<main role="main" class="cheight">
+        <div class="navbar row-cols-md-3">
+            <span  class="card-img cols-6"><img th:src="@{/img/user-2.png}"></span>
+            <div class="container">
+            <span class=" pt-4"><button class="btn border" onclick="location.href='/addEvent'">add event</button></span>
+            <span class=" pt-4"><button class="btn border" onclick="location.href='/sendInvitation'">send invitation</button></span>
+            <span class=" pt-4"><button class="btn border" onclick="location.href='/getInvitations'">my invitations</button></span>
+            <span class=" pt-4"><button class="btn border" onclick="location.href='/manageEvents'">manage events</button></span>
+            <span class=" pt-4"><button class="btn border" onclick="location.href='/logOut'">log out</button></span>
+            <span class=" pt-4"><button class="btn border" onclick="location.href='/toMain'">go to main</button></span>
+            </div>
+        </div>
+</main>
+</body>
+</html>

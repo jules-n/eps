@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>EPS:Register me</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.min.css}"/>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<header class="card-header">
+    <div class="container-fluid">
+
+        <button class="btn" onclick="location.href='/toMain'">Go to main</button>
+    </div>
+
+</header>
+<main role="main" class="row-cols-4">
+    <form  class="container mt-5 modal-content border">
+        <div class="container">
+        <div class="navbar">
+            <div class="pb-sm-3">
+                <p><label for="name" >Name:&emsp;</label></p>
+                <p><label for="surname" >Surname:&emsp;</label></p>
+                <p><label for="phone">Phone:&emsp;</label></p>
+                <p><label for="login">Login:&emsp;</label></p>
+                <p><label for="password">Password:&emsp;</label>
+            </div>
+            <div class="pb-sm-3">
+                <p><input type="text" id="name" name="name"></p>
+                <p><input type="text" id="surname" name="surname"></p>
+                <p><input type="tel" id="phone" name="phone"></p>
+                <p><input type="email" id="login" name="login"></p>
+                <p><input type="password" id="password" name="password"></p>
+            </div>
+        </div>
+            <input type="checkbox" name="premium" style="display:none;">
+            <div th:each="rate:${rate}">
+                <p>
+                    <input th:if="${rate.getPrice() >0}" formaction="premium" formmethod="post" type="submit" value="example.com" class="btn btn-primary btn-block" th:value="'Buy '+${rate.getAccountType()}"/>
+                </p>
+                <p>
+                    <input th:unless="${rate.getPrice() >0}" class="btn border btn-block"  formaction="register" formmethod="post" type="submit" th:value="'Create '+${rate.getAccountType()}+' account'" />
+                </p>
+            </div>
+        </div>
+    </form>
+</main>
+</body>
+</html>

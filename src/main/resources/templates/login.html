@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>EPS:Log In</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.min.css}"/>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<header class="card-header">
+    <div class="container-fluid">
+
+        <button class="btn" onclick="location.href='/toMain'">Go to main</button>
+    </div>
+
+</header>
+<main role="main" class="cheight m-md-3">
+   <form class="mt-5" method="post" action="logIn">
+      <p> login: <input type="text" name="login"></p>
+      <p> password: <input type="password" name="password"></p>
+       <input type="submit" class="btn border" value="log In">
+   </form>
+</main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.0'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.rybakov'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.6.7'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.7'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools:2.6.7'
+/*	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-test'*/
+	runtimeOnly 'mysql:mysql-connector-java:8.0.29'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.7'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

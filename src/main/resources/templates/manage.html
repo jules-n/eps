@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>EPS:Events</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.min.css}"/>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<header class="card-header">
+    <div class="container-fluid">
+
+        <button class="btn" onclick="location.href='/toMain'">Go to main</button>
+        <form method="post">
+        <input formaction="archive" formmethod="post" type="submit" class="btn" th:value="'Archive old'"/>
+        </form>
+    </div>
+
+</header>
+<main role="main" class="container m-md-3">
+    <div class="navbar">
+    <div th:each="event:${events}">
+    <form class="mt-5 modal-content border" method="post" style="padding:1.6%" action="cancel">
+        <p th:text="'Event name: '+${event.getEventName()}"> </p>
+        <p th:text="'Event date: '+${event.getDate()}"> </p>
+        <input type="hidden" name="idEvent" th:value="${event.getIdEvent()}">
+        <p>
+         <span th:if="${event.getDate().after(#dates.createNow())}">
+            <input type="submit" class="btn btn-block btn-secondary" value="Cancel">
+         </span>
+        </p>
+    </form>
+    </div>
+    </div>
+</main>
+</body>
+</html>

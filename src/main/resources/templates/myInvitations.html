@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>EPS:Invitations</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.min.css}"/>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<header class="card-header">
+    <div class="container-fluid">
+        <button class="btn" onclick="location.href='/toMain'">Go to main</button>
+    </div>
+
+</header>
+<main role="main" class="container m-md-3">
+    <div class="navbar">
+        <div th:each="invitation:${invitations}">
+            <form class="mt-5 modal-content border" method="post" style="padding:1.6%">
+                <p th:text="'Event: '+${invitation.getEvent().getEventName()}"></p>
+                <p th:text="'Description: '+${invitation.getEvent().getDescription()}"></p>
+                <p th:text="'Place: '+${invitation.getEvent().getPlace()}"></p>
+                <p th:text="'Time: '+${invitation.getEvent().getDate()}"></p>
+                <p th:text="'Organizer: '+${invitation.getOrganizer().getName()}+' '+${invitation.getOrganizer().getSurname()}"></p>
+                <p th:text="'Organizer`s phone: '+${invitation.getOrganizer().getPhone()}"></p>
+                <p th:text="'Text: '+${invitation.getText()}"></p>
+                <input type="hidden" name="idInvitation" th:value="${invitation.getIdInvitation()}">
+                <span th:if="${invitation.getAccepted()}">
+                </span>
+                <span th:unless="${invitation.getAccepted()}">
+                    <input formaction="decline" formmethod="post" type="submit" class="btn btn-danger btn-block" th:value="'Decline'"/>
+                <input formaction="accept" formmethod="post" type="submit" class="btn btn-block" th:value="'Accept'"/>
+                </span>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>EPS:Send invitation</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.min.css}"/>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<header class="card-header">
+    <div class="container-fluid">
+        <button class="btn" onclick="location.href='/toMain'">Go to main</button>
+    </div>
+</header>
+<main role="main" class="row-cols-4">
+    <form class="container mt-5 modal-content border" action="sendInvitation" method="post">
+        <div class="container">
+            <div class="navbar">
+                <div class="pb-sm-3">
+                    <p><label for="event" >Event:&emsp;</label></p>
+                    <p><label for="participants" >Participants:&emsp;</label></p></p>
+                    <p><label for="text">Text:&emsp;</label></p>
+                </div>
+                <div class="pb-sm-3">
+                    <p>
+                        <select id="event"  name="event">
+                         <span th:each="event:${events}">
+                        <option th:value="${event.getIdEvent()}" th:text="${event.getEventName()}"></option>
+                        </span>
+                        </select>
+                    </p>
+                    <p>
+                        <select id="participants" multiple name="participants">
+                         <span th:each="participant:${participants}">
+                             <option th:value="${participant.getIdParticipant()}" th:text="${participant.getName()}+' '+${participant.getSurname()}"></option>
+                        </span>
+                        </select>
+                    </p>
+                    <p><textarea rows="1" cols="20" name="text" id="text"></textarea></p>
+                </div>
+            </div>
+            <p><input class="btn btn-primary btn-block" type="submit" value="Send"></p>
+        </div>
+    </form>
+</main>
+</body>
+</html>
