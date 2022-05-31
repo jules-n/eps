@@ -127,6 +127,38 @@ public class MySQLDAO<T, K> implements IDAO<T, K> {
     }
 
     @Override
+    public boolean updateAllEventData(Event event, K key) {
+        String query = "UPDATE Event SET " +
+                "`name` = ?," +
+                "`place` = ?," +
+                "`date` = ?," +
+                "`description` = ?," +
+                "`idType` = ? "+
+                "WHERE `Event`.`idEvent` = ?";
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, event.getEventName());
+            preparedStatement.setString(2, event.getPlace());
+            event.getDate().setHours(event.getDate().getHours()+3);
+            preparedStatement.setTimestamp(3, new Timestamp(event.getDate().getTime()));
+            preparedStatement.setString(4, event.getDescription());
+            preparedStatement.setInt(5, event.getIdType());
+            preparedStatement.setInt(6,(Integer) key);
+            preparedStatement.execute();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public T readByKey(T entity, K key) {
+        if(entity instanceof Event) return (T)readEvent((Integer) key);
+        return null;
+    }
+
+    @Override
     public boolean create(int[] participants, int event, String text, int owner) {
         String query = "INSERT INTO Invitation(text, idEvent) VALUES(?, ?)";
         try {
