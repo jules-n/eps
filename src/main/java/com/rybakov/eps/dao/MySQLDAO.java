@@ -133,7 +133,7 @@ public class MySQLDAO<T, K> implements IDAO<T, K> {
                 "`place` = ?," +
                 "`date` = ?," +
                 "`description` = ?," +
-                "`idType` = ?,"+
+                "`idType` = ? "+
                 "WHERE `Event`.`idEvent` = ?";
         try {
             preparedStatement = connection.prepareStatement(query);

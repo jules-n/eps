@@ -34,7 +34,7 @@
         <p>
          <span th:if="${event.getDate().after(#dates.createNow())}">
              <input formaction="cancel" formmethod="post" type="submit"  class="btn btn-block btn-secondary" th:value="'Cancel'"/>
-             <input formaction="edit" formmethod="post" type="submit"  class="btn btn-block btn-secondary" th:value="'Edit'"/>
+             <input formaction="editRedirect" formmethod="post" type="submit"  class="btn btn-block btn-secondary" th:value="'Edit'"/>
          </span>
         </p>
     </form>

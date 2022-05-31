@@ -84,7 +84,14 @@ public class HomeController {
     String getInvitations(@ModelAttribute("participant") Participant participant,  Model model){
         var list = getMySQLDAO().readMyInvitation(participant.getIdParticipant()).stream().filter(
                 el -> ((Invitation)el).getEvent().getDate().compareTo(Date.from(Instant.now()))!=-1
-        ).collect(Collectors.toList());
+        ).map(
+                       el ->
+                        {
+                            ((Invitation)el).getEvent().getDate().setHours(((Invitation)el).getEvent().getDate().getHours()-3);
+                            return el;
+                        }
+                )
+                .collect(Collectors.toList());
         model.addAttribute("invitations",list);
         return "myInvitations";
     }

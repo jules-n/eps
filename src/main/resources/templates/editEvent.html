@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>EPS:Add event</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-grid.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-reboot.min.css}"/>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<header class="card-header">
+    <div class="container-fluid">
+        <button class="btn" onclick="location.href='/toMain'">Go to main</button>
+    </div>
+</header>
+<main role="main" class="row-cols-4">
+    <form class="container mt-4 modal-content border" action="edit" method="post">
+        <div class="container">
+            <div class="navbar">
+                <div class="pb-sm-3">
+                    <p><label for="name" >Name:&emsp;</label></p>
+                    <p><label for="place" >Place:&emsp;</label></p>
+                    <p><label for="date">Date:&emsp;</label></p>
+                    <p><label for="type">Type:&emsp;</label></p>
+                    <p><label for="description">Description:&emsp;</label></p>
+                </div>
+                <div class="pb-sm-3">
+                    <p><input type="text" id="name" name="name" th:value="${event.getEventName()}"></p>
+                    <p><input type="text" id="place" name="place" th:value="${event.getPlace()}"></p>
+                    <p><input type="date" id="date" name="date">&emsp;<input type="time" name="time">
+                    <p>
+                    <input type="hidden" name="idEvent" id="idEvent" th:value="${idEvent}">
+                    <select id="type"  name="type">
+                         <span th:each="type:${types}">
+                        <option th:value="${type.getIdType()}" th:text="${type.getTypeName()}"></option>
+                        </span>
+                    </select>
+
+                    </p>
+                    <p><textarea rows="1" cols="20" name="description" id="description" th:value="${event.getDescription()}"></textarea></p>
+                </div>
+            </div>
+            <p><input class="btn btn-primary btn-block" type="submit" value="Edit"></p>
+        </div>
+    </form>
+</main>
+</body>
+</html>
