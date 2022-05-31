@@ -13,6 +13,7 @@ public interface IDAO<T, K> {
     List readAllBy(T entity, K key);
     boolean update(T entity, K key);
     boolean archiveEvents(K key);
+    T readByKey(T entity, K key);
     boolean create(int[] participants, int event, String text, int owner);
     List<Invitation> readMyInvitation(K key);
     boolean confirm(int user, K key, Boolean decision);

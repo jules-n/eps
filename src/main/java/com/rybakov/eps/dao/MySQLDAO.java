@@ -127,6 +127,12 @@ public class MySQLDAO<T, K> implements IDAO<T, K> {
     }
 
     @Override
+    public T readByKey(T entity, K key) {
+        if(entity instanceof Event) return (T)readEvent((Integer) key);
+        return null;
+    }
+
+    @Override
     public boolean create(int[] participants, int event, String text, int owner) {
         String query = "INSERT INTO Invitation(text, idEvent) VALUES(?, ?)";
         try {
