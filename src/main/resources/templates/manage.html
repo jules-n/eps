@@ -27,13 +27,14 @@
 <main role="main" class="container m-md-3">
     <div class="navbar">
     <div th:each="event:${events}">
-    <form class="mt-5 modal-content border" method="post" style="padding:1.6%" action="cancel">
+    <form class="mt-5 modal-content border" method="post" style="padding:1.6%">
         <p th:text="'Event name: '+${event.getEventName()}"> </p>
         <p th:text="'Event date: '+${event.getDate()}"> </p>
         <input type="hidden" name="idEvent" th:value="${event.getIdEvent()}">
         <p>
          <span th:if="${event.getDate().after(#dates.createNow())}">
-            <input type="submit" class="btn btn-block btn-secondary" value="Cancel">
+             <input formaction="cancel" formmethod="post" type="submit"  class="btn btn-block btn-secondary" th:value="'Cancel'"/>
+             <input formaction="edit" formmethod="post" type="submit"  class="btn btn-block btn-secondary" th:value="'Edit'"/>
          </span>
         </p>
     </form>
